@@ -9,7 +9,6 @@ display parts or the whole JSON response from an api.
 
 ![alt text](https://user-images.githubusercontent.com/13590797/148958016-69f48869-8bec-4d90-b221-10025de54503.png "Advanced Example")
 
-
 ## Installation
 
 ```bash
@@ -37,7 +36,7 @@ npm install
         style: "color: red;",
         class: "large"
       }
-    ]  
+    ]
   }
 },
 ```
@@ -187,6 +186,13 @@ With [JSONPath](https://restfulapi.net/json-jsonpath/) you can select the values
       <td>Custom Configuration of the values you want to display (<a href="#value-configuration">see below</a>)
         <br><b>Type:</b> <code>array</code>
         <br><b>Default:</b> <code>[]</code> Which means it displays all first level attributes (or the first element of an array).
+      </td>
+    </tr>
+        <tr>
+      <td><a href="#value-configuration"><code>formatter</code></a></td>
+      <td>Optional function which is passed the value object to modify the display of the value
+        <br><b>Type:</b> <code>Function</code>
+        <br><b>Default:</b> <code>input value</code> Returns the value passed in as-is.
       </td>
     </tr>
     <tr>

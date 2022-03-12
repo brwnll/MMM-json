@@ -17,6 +17,10 @@ Module.register("MMM-json", {
     this.loaded = false;
     this.getData();
 
+    this.formatter = this.config.formatter
+      ? this.config.formatter
+      : (value) => value;
+
     var self = this;
     // Schedule updates
     setInterval(function () {
@@ -109,7 +113,9 @@ Module.register("MMM-json", {
 
       var titleTr = document.createElement("td");
       titleTr.className = "small regular bright";
-      titleTr.innerHTML = this.response[i].title + ":";
+      if (this.response[i].title) {
+        titleTr.innerHTML = this.response[i].title + ":";
+      }
       row.appendChild(titleTr);
 
       for (var j = 0; j < this.response[i].value.length; j++) {
@@ -128,7 +134,7 @@ Module.register("MMM-json", {
         }
 
         // Add Value
-        dataTr.innerHTML += this.response[i].value[j];
+        dataTr.innerHTML += this.formatter(this.response[i].value[j]);
 
         // Add Suffix
         if (
