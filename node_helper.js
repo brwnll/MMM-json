@@ -60,6 +60,10 @@ module.exports = NodeHelper.create({
               responseObject = {
                 identifier: payload.identifier,
                 data: Object.keys(jsonData).map((prop) => {
+                  if (payload.config.hideTitle) {
+                    return { value: [jsonData[prop]] };
+                  }
+
                   return { title: prop, value: [jsonData[prop]] };
                 })
               };
